@@ -1,8 +1,8 @@
-@import '../partials/button/button.css';
-@import '../partials/input/input.css';
-@import '../partials/avatar/avatar.css';
-@import '../partials/preview/preview.css';
-@import '../partials/message/message.css';
+@import '../components/button/button.css';
+@import '../components/input/input.css';
+@import '../components/avatar/avatar.css';
+@import '../components/preview/preview.css';
+@import '../components/message/message.css';
 
 :root {
   --brand-primary: #3369F3;
@@ -39,6 +39,10 @@ a {
   }
 }
 
+fieldset {
+  border: none;
+}
+
 .center {
   width: 85%;
   margin: 0 auto;
@@ -48,9 +52,6 @@ a {
   font-size: 0.66rem;
 }
 
-.text--medium {
-  font-size: 1.25rem;
-}
 .text--medium {
   font-size: 1.25rem;
 }

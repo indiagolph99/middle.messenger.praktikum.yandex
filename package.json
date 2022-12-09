@@ -2,8 +2,9 @@
   "name": "middle.messenger.praktikum.yandex",
   "version": "1.0.0",
   "description": "module 1 project",
+  "engines" : { "node" : ">=12" },
   "scripts": {
-    "dev": "parcel --no-cache index.hbs",
+    "dev": "parcel --no-cache index.hbs --open",
     "build": "parcel build index.hbs",
     "start": "node index.js"
   },
@@ -23,11 +24,11 @@
     "parcel": "2.8.0",
     "postcss": "8.4.19",
     "postcss-css-variables": "0.18.0",
-    "postcss-import": "^15.1.0",
+    "postcss-import": "15.1.0",
     "postcss-nested": "6.0.0",
-    "postcss-nesting": "^10.2.0"
+    "postcss-nesting": "10.2.0"
   },
   "dependencies": {
-    "express": "^4.18.2"
+    "express": "4.18.2"
   }
 }

@@ -1,11 +1,9 @@
 <div>
-    {{#if disabled}}
-        <label>
+    <fieldset>
+        {{#if disabled}}
             <input type={{ type }} name={{ name }} placeholder={{ placeholder }} required disabled class="input {{{ class }}}" />
-        </label>
-    {{else}}
-        <label>
+        {{else}}
             <input type={{ type }} name={{ name }} placeholder={{ placeholder }} required class="input {{{ class }}}" />
-        </label>
-    {{/if}}
+        {{/if}}
+    </fieldset>
 </div>

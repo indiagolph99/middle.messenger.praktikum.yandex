@@ -16,4 +16,4 @@ npm run start
 
 ## [Ссылка на макеты](https://www.figma.com/file/HjeXthN0uUsBDP5bRptwDt/module-1-mockups?t=jxb6RnBmnVwy8mxO-6)
 
-## [Ссылка на Netlify](https://https://superlative-stardust-b71d59.netlify.app/)
+## [Ссылка на Netlify](https://superlative-stardust-b71d59.netlify.app/)

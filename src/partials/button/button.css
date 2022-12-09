@@ -1,0 +1,34 @@
+.button {
+  height: 2.25em;
+  font-size: 1rem;
+  border-radius: 8px;
+  color: white;
+  display: inline-block;
+  vertical-align: middle;
+  padding: 0 1em;
+  border-style: none;
+  cursor: pointer;
+  background-color: var(--brand-primary);
+
+  &:hover {
+    background-color: var(--brand-primary-darker);
+  }
+
+  &:active {
+    background-color: var(--brand-primary);
+  }
+
+  &--ghost {
+    background-color: white;
+    padding: 0 1em;
+    color: var(--brand-secondary);
+
+    &:hover {
+      background-color: var(--brand-secondary-accent);
+    }
+
+    &:active {
+      background-color: white;
+    }
+  }
+}

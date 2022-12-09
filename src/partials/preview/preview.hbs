@@ -1,0 +1,13 @@
+<div class="preview">
+    <figure class="ma-0"><img class="user-avatar" src="../../assets/camera.svg"></figure>
+    <div class="preview__message">
+        <strong>{{ userName }}</strong>
+        <p class="preview__message__text">{{ messageText }}</p>
+    </div>
+    <div class="flex flex-column flex-space-between">
+        <p class="text--small text--brand-secondary">{{ time }}</p>
+        {{#if counter}}
+            <span class="counter">{{ counter }}</span>
+        {{/if}}
+    </div>
+</div>

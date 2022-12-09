@@ -1,0 +1,30 @@
+.messenger {
+  overflow: hidden;
+  height: 100vh;
+  width: 100vw;
+}
+
+.sidebar {
+  width: 100%;
+  flex-wrap: wrap;
+  display: flex;
+}
+
+.sidebar > :first-child {
+  /* ↓ The width when the sidebar _is_ a sidebar */
+  flex-basis: 20rem;
+  flex-grow: 1;
+  height: 100vh;
+  border-right: 1px solid var(--brand-secondary-accent);
+}
+.sidebar > :last-child {
+  /* ↓ Grow from nothing */
+  flex-basis: 0;
+  flex-grow: 999;
+  /* ↓ Wrap when the elements are of equal width */
+  min-width: 50%;
+}
+
+.scrollbar {
+  flex-grow: 1;
+}

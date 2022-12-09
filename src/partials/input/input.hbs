@@ -1,0 +1,11 @@
+<div>
+    {{#if disabled}}
+        <label>
+            <input type={{ type }} name={{ name }} placeholder={{ placeholder }} required disabled class="input {{{ class }}}" />
+        </label>
+    {{else}}
+        <label>
+            <input type={{ type }} name={{ name }} placeholder={{ placeholder }} required class="input {{{ class }}}" />
+        </label>
+    {{/if}}
+</div>

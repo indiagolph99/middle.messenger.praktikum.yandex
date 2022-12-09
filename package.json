@@ -1,0 +1,33 @@
+{
+  "name": "middle.messenger.praktikum.yandex",
+  "version": "1.0.0",
+  "description": "module 1 project",
+  "scripts": {
+    "dev": "parcel --no-cache index.hbs",
+    "build": "parcel build index.hbs",
+    "start": "node index.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/indiagolph99/middle.messenger.praktikum.yandex.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/indiagolph99/middle.messenger.praktikum.yandex/issues"
+  },
+  "homepage": "https://github.com/indiagolph99/middle.messenger.praktikum.yandex#readme",
+  "devDependencies": {
+    "@anikin/parcel-transformer-handlebars": "1.0.9",
+    "parcel": "2.8.0",
+    "postcss": "8.4.19",
+    "postcss-css-variables": "0.18.0",
+    "postcss-import": "^15.1.0",
+    "postcss-nested": "6.0.0",
+    "postcss-nesting": "^10.2.0"
+  },
+  "dependencies": {
+    "express": "^4.18.2"
+  }
+}

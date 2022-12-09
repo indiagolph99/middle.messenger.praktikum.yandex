@@ -1,0 +1,39 @@
+.preview {
+  padding: 0.66rem;
+  gap: 0.66rem;
+  display: flex;
+}
+
+.preview__avatar {
+  cursor: pointer;
+  width: 4rem;
+  height: 4rem;
+  border: 2px solid var(--brand-secondary-accent);
+  border-radius: 100%;
+  background-color: gray;
+}
+
+.preview__message {
+  flex-grow: 1;
+  height: 4em;
+  overflow: hidden;
+  white-space: normal;
+}
+
+.preview__message__text {
+  color: var(--brand-secondary);
+  text-overflow: ellipsis;
+}
+
+.counter {
+  border-radius: 50%;
+  background-color: var(--brand-primary);
+  color: var(--brand-secondary-accent);
+  text-align: center;
+  font-size: 0.66rem;
+  padding: 0.6em 0;
+}
+
+.menu {
+  text-align: center;
+}

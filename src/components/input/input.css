@@ -1,0 +1,30 @@
+.input {
+  font-size: 1rem;
+  width: 100%;
+  padding: 0.5em 0;
+  display: inline-block;
+  border: none;
+  outline: none;
+  border-bottom: 0.125rem solid var(--brand-primary);
+  box-sizing: border-box;
+  margin-bottom: 0.66rem;
+
+  &-ghost {
+    border-bottom: none;
+  }
+
+  &-search {
+    margin: 0;
+    border-radius: 8px;
+    background-color: var(--brand-secondary-accent);
+    color: var(--brand-secondary);
+    border-bottom: none;
+    &::placeholder {
+      text-align: center;
+    }
+
+    &:focus::placeholder {
+      color: transparent;
+    }
+  }
+}

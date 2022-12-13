@@ -1,0 +1,44 @@
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <link rel="stylesheet" href="../../styles/index.css" />
+    <link rel="stylesheet" href="./main.css" />
+</head>
+<body>
+    <main class="messenger">
+        <div class="sidebar">
+            <div class="sidebar--aside flex flex-column stack-border">
+                <div class="pa-s1">
+                    <input type="text" placeholder="Search" name="search" class="input input-search">
+                </div>
+                <div class="scrollbar stack-border">
+                    {{> 'preview/preview' userName='Kek' messageText='lorem ipsum' time='11:30' }}
+                    {{> 'preview/preview' userName='Kek' messageText='lorem ipsum' time='11:30' counter='3' }}
+                </div>
+                <div class="menu flex flex-column flex-x-center">
+                    <a class="py-s2" href="../info">Profile</a>
+                </div>
+            </div>
+            <div class="sidebar--main flex flex-column stack-border">
+                <div class="flex flex-y-center pa-s0">
+                    <div class="flex flex-y-center">
+                        <img alt="contact avatar" class="user-avatar user-avatar--to-info" src="../../assets/camera.svg">
+                        <strong class="ml-s1">Kek</strong>
+                    </div>
+                    {{> 'button/button' text='•••' class='button--ghost ml-auto' }}
+                </div>
+                <div class="scrollbar">
+                    {{> 'message/message' time='11:30' }}
+                    {{> 'message/message' time='12:30' from='true' }}
+                </div>
+                <div class="flex pa-s0">
+                    {{> 'button/button' text='media' class='button--ghost ml-auto' }}
+                    <input class="input input-search" name="message">
+                    {{> 'button/button' text='send' }}
+                </div>
+            </div>
+        </div>
+    </main>
+</body>
+</html>

@@ -4,18 +4,18 @@
   width: 25rem;
   background-color: var(--brand-secondary-accent);
 
-  &--from {
-    margin-left: auto;
-    background-color: var(--brand-primary-accent);
-
-    & .message__time {
-      color: var(--brand-primary);
-    }
-  }
-
   &__time {
     color: var(--brand-secondary);
     font-size: 0.66rem;
     text-align: end;
+  }
+
+  &--from {
+    margin-left: auto;
+    background-color: var(--brand-primary-accent);
+
+    .message__time {
+      color: var(--brand-primary);
+    }
   }
 }

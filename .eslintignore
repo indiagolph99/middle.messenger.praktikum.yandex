@@ -1,4 +1,4 @@
-/dist
-**/*.min.js
-/node_modules
-/.parcel-cache
+src/assets/**/*
+.parcel-cache
+node_modules
+dist

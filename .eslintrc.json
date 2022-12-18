@@ -1,0 +1,40 @@
+{
+  "extends": [
+    "airbnb",
+    "prettier",
+    "plugin:unicorn/recommended",
+    "plugin:prettier/recommended"
+  ],
+  "plugins": [
+    "prettier",
+    "unicorn"
+  ],
+  "overrides": [
+    {
+      "parser": "@typescript-eslint/parser",
+      "files": [
+        "*.ts", "*.tsx"
+      ],
+      "extends": [
+        "plugin:import/recommended",
+        "airbnb-typescript/base",
+        "plugin:@typescript-eslint/recommended",
+        "plugin:@typescript-eslint/recommended-requiring-type-checking"
+      ],
+      "plugins": [
+        "@typescript-eslint/eslint-plugin"
+      ],
+      "parserOptions": {
+        "project": "tsconfig.json"
+      }
+    }
+  ],
+  "rules": {
+    "prettier/prettier": "warn",
+    "unicorn/prevent-abbreviations": "off",
+    "unicorn/prefer-module": "off",
+    "no-plusplus": "off",
+    "no-console": "warn",
+    "eol-last": "error"
+  }
+}

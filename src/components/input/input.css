@@ -19,6 +19,7 @@
     background-color: var(--brand-secondary-accent);
     color: var(--brand-secondary);
     border-bottom: none;
+
     &::placeholder {
       text-align: center;
     }

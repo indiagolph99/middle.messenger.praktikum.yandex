@@ -1,40 +1,61 @@
 {
   "extends": [
     "airbnb",
-    "prettier",
+    "airbnb-typescript/base",
     "plugin:unicorn/recommended",
-    "plugin:prettier/recommended"
+    "plugin:prettier/recommended",
+    "plugin:@typescript-eslint/recommended",
+    "plugin:@typescript-eslint/recommended-requiring-type-checking",
+    "plugin:import/recommended",
+    "plugin:import/typescript",
+    "prettier"
   ],
-  "plugins": [
-    "prettier",
-    "unicorn"
-  ],
-  "overrides": [
-    {
-      "parser": "@typescript-eslint/parser",
-      "files": [
-        "*.ts", "*.tsx"
-      ],
-      "extends": [
-        "plugin:import/recommended",
-        "airbnb-typescript/base",
-        "plugin:@typescript-eslint/recommended",
-        "plugin:@typescript-eslint/recommended-requiring-type-checking"
-      ],
-      "plugins": [
-        "@typescript-eslint/eslint-plugin"
-      ],
-      "parserOptions": {
+  "settings": {
+    "import/resolver": {
+      "typescript": {
         "project": "tsconfig.json"
+      },
+      "alias": {
+        "map": [
+          ["$core", "./src/core"],
+          ["$components", "./src/components"],
+          ["$pages", "./src/pages"],
+          ["$assets", "./src/assets"],
+          ["$utils", "./src/utils"]
+        ],
+        "extensions": [
+          ".ts", ".js", ".jsx", ".json"
+        ]
       }
     }
+  },
+  "parser": "@typescript-eslint/parser",
+  "plugins": [
+    "import",
+    "unicorn",
+    "@typescript-eslint/eslint-plugin",
+    "prettier"
   ],
+  "parserOptions": {
+    "project": ["tsconfig.json"]
+  },
   "rules": {
-    "prettier/prettier": "warn",
+    "no-debugger": "off",
     "unicorn/prevent-abbreviations": "off",
+    "import/prefer-default-export": "off",
     "unicorn/prefer-module": "off",
+    "unicorn/no-null": "off",
+    "unicorn/no-array-for-each": "off",
+    "unicorn/no-array-reduce": "off",
+    "unicorn/filename-case": "off",
+    "import/extensions": "off",
+    "no-underscore-dangle": "off",
+    "class-methods-use-this": "off",
     "no-plusplus": "off",
     "no-console": "warn",
-    "eol-last": "error"
+    "eol-last": "error",
+    "prettier/prettier": "warn",
+    "@typescript-eslint/no-explicit-any": "error",
+    "@typescript-eslint/no-use-before-define": "off"
   }
 }

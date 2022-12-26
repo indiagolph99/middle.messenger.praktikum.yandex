@@ -31,4 +31,8 @@
       background-color: white;
     }
   }
+
+  &--danger {
+    background-color: var(--brand-danger);
+  }
 }

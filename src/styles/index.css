@@ -1,4 +1,5 @@
 @import url("../components/button/button.css");
+@import url("../pages/main/main.css");
 @import url("../components/input/input.css");
 @import url("../components/avatar/avatar.css");
 @import url("../components/preview/preview.css");
@@ -25,6 +26,12 @@ body {
   font-size: 1rem;
 }
 
+fieldset {
+  border: none;
+  margin: 0;
+  padding: 0;
+}
+
 h1,
 h2,
 h3,
@@ -44,10 +51,6 @@ a {
   &:visited {
     color: var(--brand-primary);
   }
-}
-
-fieldset {
-  border: none;
 }
 
 .center {
@@ -145,6 +148,10 @@ fieldset {
 
 .height-max {
   height: 100%;
+}
+
+.height-max-vh {
+  height: 100vh;
 }
 
 .mt-s0 {

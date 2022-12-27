@@ -1,0 +1,23 @@
+{
+  "plugins": [
+    "stylelint-scss"
+  ],
+  "extends": [
+    "stylelint-config-standard",
+    "stylelint-config-prettier"
+  ],
+  "rules": {
+    "color-hex-case": "lower",
+    "at-rule-no-unknown": null,
+    "scss/at-rule-no-unknown": true,
+    "scss/dollar-variable-pattern": "^foo",
+    "scss/selector-no-redundant-nesting-selector": true,
+    "selector-class-pattern": null
+  },
+  "ignoreFiles": [
+    "build/*",
+    ".parcel-cache/",
+    "node_modules/",
+    "dist/**/*.css"
+  ]
+}

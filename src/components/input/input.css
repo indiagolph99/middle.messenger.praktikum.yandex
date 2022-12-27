@@ -7,7 +7,6 @@
   outline: none;
   border-bottom: 0.125rem solid var(--brand-primary);
   box-sizing: border-box;
-  margin-bottom: 0.66rem;
 
   &-ghost {
     border-bottom: none;
@@ -19,6 +18,7 @@
     background-color: var(--brand-secondary-accent);
     color: var(--brand-secondary);
     border-bottom: none;
+
     &::placeholder {
       text-align: center;
     }
@@ -27,4 +27,9 @@
       color: transparent;
     }
   }
+}
+
+.error {
+  text-align: left;
+  height: 1.4em;
 }

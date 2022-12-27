@@ -1,0 +1,4 @@
+src/assets/**/*
+.parcel-cache
+/node_modules
+dist

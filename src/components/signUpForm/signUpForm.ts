@@ -12,7 +12,14 @@ import {
   ONLY_DIGITS,
 } from '$utils/regexps';
 
+import { AuthController } from '$controllers';
+import { SignUpRequest } from '$api/types';
+
 export default class SignUpForm extends Block {
+  private authController: AuthController;
+
+  public static componentName = 'Sign up';
+
   constructor() {
     const itemsConfig = [
       { inputProps: { name: 'email', type: 'email', placeholder: 'Email' } },
@@ -120,7 +127,7 @@ export default class SignUpForm extends Block {
       {
         title: 'Sign up',
         linkTitle: 'Log in ',
-        linkHref: '#',
+        linkHref: '/login',
         formConfig: {
           itemsConfig,
           formId: 'signup',
@@ -129,14 +136,29 @@ export default class SignUpForm extends Block {
       },
       rules,
     );
-    super({ authForm });
+    super({ authForm, error: '' });
+    this.authController = new AuthController();
+    this.setProps({
+      events: {
+        submit: (event: SubmitEvent) => {
+          this.setProps({ error: '' });
+          const formData = new FormData(event.target as HTMLFormElement);
+          const formDataObj = Object.fromEntries(formData.entries());
+          this.authController
+            .signup(formDataObj as unknown as SignUpRequest)
+            .catch(() =>
+              this.refs.authform.setProps({ error: 'Something went wrong' }),
+            );
+        },
+      },
+    });
   }
 
   protected render(): string {
     return `
-    <div>
+    <main class="center flex flex-column flex-x-center flex-center height-max-vh">
       {{{ authForm }}}
-    </div>
+    </main>
     `;
   }
 }

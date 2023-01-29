@@ -9,6 +9,8 @@ export interface InputProps extends Props {
   className?: Values<typeof Input.CLASS>;
   disabled?: boolean;
   inlineForm?: boolean;
+  id?: string;
+  value?: string | number;
 }
 
 export default class Input extends Block {
@@ -41,19 +43,12 @@ export default class Input extends Block {
 
   protected render(): string {
     return `
-      <div>
-        <input type="{{ type }}" name="{{ name }}" placeholder="{{ placeholder }}"
-        ${this.props.disabled ? 'disabled' : ''}
-        ${this.props.formId ? 'form="{{ formId }}"' : ''}
-        ${
-          this.props.type === Input.TYPES.TEL
-            ? 'pattern="[+]?[0-9]{10, 15}"'
-            : ''
-        }
-        class="input {{{ className }}} ${
-          this.props.inlineForm ? 'flex-grow-1' : ''
-        }" />
-      </div>
+      <input {{#if id}}id="{{ id }}"{{/if}} type="{{ type }}" name="{{ name }}" placeholder="{{ placeholder }}"
+      ${this.props.disabled ? 'disabled' : ''}
+      ${this.props.formId ? 'form="{{ formId }}"' : ''}
+      class="input {{{ className }}} ${
+        this.props.inlineForm ? 'flex-grow-1' : ''
+      }" />
     `;
   }
 }

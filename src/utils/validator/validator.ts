@@ -69,8 +69,6 @@ export default class Validator {
       errors.push(err);
     });
 
-    if (errors.every((err) => err.length === 0)) {
-      console.log(formDataObj);
-    }
+    return errors.every((err) => err.length === 0);
   }
 }

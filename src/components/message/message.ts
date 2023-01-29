@@ -3,7 +3,7 @@ import { Props } from '$core/Block';
 
 export interface MessageProps extends Props {
   text: string;
-  time: string;
+  time?: string;
   from?: boolean;
 }
 

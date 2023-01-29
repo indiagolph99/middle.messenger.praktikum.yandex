@@ -7,29 +7,58 @@ export interface AvatarProps extends Props {
   formId: string;
 }
 
+function readURL(event: Event) {
+  const target = event.target as HTMLInputElement;
+  if (target.files !== null && target.files[0]) {
+    const reader = new FileReader();
+
+    const avatarElement = document.querySelector('#avatar');
+
+    reader.addEventListener('load', (e) => {
+      if (
+        avatarElement !== null &&
+        e.target !== null &&
+        typeof e.target.result === 'string'
+      ) {
+        avatarElement.setAttribute('src', e.target.result);
+      }
+    });
+
+    reader.readAsDataURL(target.files[0]);
+  }
+}
+
 export default class Avatar extends Block {
   constructor(props: AvatarProps) {
     const input = new Input({
       type: 'file',
       name: 'avatar',
       formId: props.formId,
+      events: {
+        change: readURL,
+      },
     });
     super({ input, ...props });
   }
 
   protected render(): string {
     return `
-      <div class="personal-image">
-        <fieldset>
+      <label>
+        <div class="personal-image">
           {{{ input }}}
-        </fieldset>
-        <figure class="personal-figure">
-          <img src="{{ url }}" class="personal-avatar" alt="avatar">
-          <figcaption class="personal-figcaption">
-              <img src="../assets/camera.svg" alt="avatar">
-          </figcaption>
-        </figure>
-      </div>
+          <figure class="personal-figure">
+            <img
+              id="avatar"
+              alt="contact avatar"
+              class="personal-avatar"
+              src="{{ url }}"
+              onerror="this.onerror = null; this.src = '/camera.svg'"
+            >
+            <figcaption class="personal-figcaption">
+            </figcaption>
+          </figure>
+        </div>
+      </label>
     `;
   }
 }

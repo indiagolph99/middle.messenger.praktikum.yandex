@@ -4,6 +4,7 @@
 @import url("../components/avatar/avatar.css");
 @import url("../components/preview/preview.css");
 @import url("../components/message/message.css");
+@import url("../components/modal/modal.css");
 
 :root {
   --brand-primary: #3369f3;
@@ -12,6 +13,9 @@
   --brand-secondary: #626262;
   --brand-secondary-accent: #d5d5d5;
   --brand-danger: #ff2f2f;
+  --brand-secondary-danger: #ff9393;
+  --brand-success: #2e7000;
+  --brand-secondary-success: #93ff95;
 }
 
 *,
@@ -45,6 +49,7 @@ a {
   text-decoration: none;
 
   &:hover {
+    cursor: pointer;
     text-decoration: underline;
   }
 
@@ -86,8 +91,24 @@ a {
   color: var(--brand-danger);
 }
 
+.text--brand-success {
+  color: var(--brand-success);
+}
+
 .background--brand-primary {
   background-color: var(--brand-primary);
+}
+
+.background--brand-white {
+  background-color: white;
+}
+
+.background--brand-secondary-danger {
+  background-color: var(--brand-secondary-danger);
+}
+
+.background--brand-secondary-success {
+  background-color: var(--brand-secondary-success);
 }
 
 .flex {
@@ -103,6 +124,7 @@ a {
 }
 
 .card {
+  z-index: 5000;
   border-radius: 12px;
   box-shadow: 0 0 6px rgb(0 0 0 / 14%);
   min-width: 20rem;
@@ -125,6 +147,15 @@ a {
   justify-content: center;
 }
 
+.flex-x-end {
+  justify-content: end;
+}
+
+.flex-x-space-between {
+  justify-content: space-between;
+}
+
+
 .flex-y-center {
   align-items: center;
 }
@@ -136,6 +167,10 @@ a {
 
 .flex-column {
   flex-direction: column;
+}
+
+.flex-row {
+  flex-direction: row;
 }
 
 .box {
@@ -152,6 +187,10 @@ a {
 
 .height-max-vh {
   height: 100vh;
+}
+
+.width-max-vw {
+  width: 100vw;
 }
 
 .mt-s0 {
@@ -212,6 +251,10 @@ a {
 
 .ml-auto {
   margin-left: auto;
+}
+
+.ml-0-auto {
+  margin: 0 auto;
 }
 
 .ml-s1 {

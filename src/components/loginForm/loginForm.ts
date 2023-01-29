@@ -7,8 +7,14 @@ import {
   CAPITAL_REQUIRED,
   DIGIT_REQUIRED,
 } from '$utils/regexps';
+import { AuthController } from '$controllers';
+import { LoginRequest } from '$api/types';
 
-export default class LoginForm extends Block {
+class LoginForm extends Block<Record<string, unknown>> {
+  public static componentName = 'Login';
+
+  private controller: AuthController;
+
   constructor() {
     const itemsConfig = [
       { inputProps: { name: 'login', placeholder: 'Login' } },
@@ -54,7 +60,7 @@ export default class LoginForm extends Block {
       {
         title: 'Login',
         linkTitle: 'Sign up',
-        linkHref: '#',
+        linkHref: '/signup',
         formConfig: {
           itemsConfig,
           formId: 'login',
@@ -63,14 +69,31 @@ export default class LoginForm extends Block {
       },
       rules,
     );
-    super({ authForm });
+    super({ authForm, error: '' });
+    this.controller = new AuthController();
+    this.setProps({
+      events: {
+        submit: (event: SubmitEvent) => {
+          this.setProps({ error: '' });
+          const formData = new FormData(event.target as HTMLFormElement);
+          const formDataObj = Object.fromEntries(formData.entries());
+          this.controller
+            .login(formDataObj as unknown as LoginRequest)
+            .catch(() =>
+              this.refs.authform.setProps({ error: 'Something went wrong' }),
+            );
+        },
+      },
+    });
   }
 
   protected render(): string {
     return `
-    <div>
-      {{{ authForm }}}
-    </div>
+      <main class="center flex flex-column flex-x-center flex-center height-max-vh">
+        {{{ authForm }}}
+      </main>
     `;
   }
 }
+
+export default LoginForm;

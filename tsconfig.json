@@ -13,7 +13,13 @@
       "$components": ["components"],
       "$components/*": ["components/*"],
       "$utils": ["utils"],
-      "$utils/*": ["utils/*"]
+      "$utils/*": ["utils/*"],
+      "$pages": ["pages"],
+      "$pages/*": ["pages/*"],
+      "$api": ["api"],
+      "$api/*": ["api/*"],
+      "$controllers": ["controllers"],
+      "$controllers/*": ["controllers/*"]
     },
     // "lib": [],                             /* Specify library files to be included in the compilation. */
     // "allowJs": true,                       /* Allow javascript files to be compiled. */

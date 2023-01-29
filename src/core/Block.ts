@@ -2,6 +2,11 @@ import { nanoid } from 'nanoid';
 import Handlebars from 'handlebars';
 import EventBus, { Listener } from './EventBus';
 
+export interface BlockClass<T extends Props> extends Function {
+  new (props: T): Block;
+  componentName?: string;
+}
+
 type State = Record<string | number, unknown>;
 
 export type Props = {
@@ -34,6 +39,8 @@ export default class Block<P extends Props = Props> {
   } as const;
 
   public id: string;
+
+  public componentName?: string;
 
   public ref: string | undefined;
 
@@ -97,7 +104,7 @@ export default class Block<P extends Props = Props> {
     this.componentDidMount(props);
   }
 
-  componentDidMount(props: P) {}
+  componentDidMount(props?: P) {}
 
   dispatchComponentDidMount() {
     this.eventBus.emit(Block.EVENTS.FLOW_CDM, this.props);
@@ -298,7 +305,7 @@ export default class Block<P extends Props = Props> {
   }
 
   show() {
-    this.getContent().style.display = 'block';
+    this.getContent().style.display = '';
   }
 
   hide() {

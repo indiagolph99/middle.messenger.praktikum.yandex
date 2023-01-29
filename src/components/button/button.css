@@ -34,5 +34,13 @@
 
   &--danger {
     background-color: var(--brand-danger);
+
+    &:hover {
+      background-color: var(--brand-secondary-danger);
+    }
+
+    &:active {
+      background-color: var(--brand-danger);
+    }
   }
 }

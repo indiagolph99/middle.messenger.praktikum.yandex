@@ -2,6 +2,11 @@
   padding: 0.66rem;
   gap: 0.66rem;
   display: flex;
+  cursor: pointer;
+
+  &:hover {
+    background-color: var(--brand-secondary-accent);
+  }
 }
 
 .preview__avatar {

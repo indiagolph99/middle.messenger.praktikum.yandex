@@ -22,11 +22,13 @@
   /* ↓ Grow from nothing */
   flex-basis: 0;
   flex-grow: 999;
+  height: 100vh;
 
   /* ↓ Wrap when the elements are of equal width */
   min-width: 50%;
 }
 
 .scrollbar {
+  overflow: scroll;
   flex-grow: 1;
 }

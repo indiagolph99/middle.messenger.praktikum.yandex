@@ -2,6 +2,8 @@ import { Block } from '$core';
 import { ChatAside, ChatMain } from '$components';
 
 export default class Main extends Block {
+  static componentName = 'Chats';
+
   constructor() {
     const aside = new ChatAside();
     const main = new ChatMain();

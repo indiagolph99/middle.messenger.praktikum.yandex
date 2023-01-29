@@ -20,7 +20,6 @@ export default class Form extends Block<FormProps> {
       ...props,
       events: {
         submit: (event: SubmitEvent) => {
-          event.preventDefault();
           this.validator.onSubmit(event);
         },
       },
@@ -47,7 +46,7 @@ export default class Form extends Block<FormProps> {
 
   protected render(): string {
     return `
-      <form class="text-center {{#if inlineForm}}flex flex-grow-1{{/if}}"  id="{{ formId }}">
+      <form class="text-center {{#if inlineForm}}flex flex-grow-1{{/if}}" id="{{ formId }}" {{#unless noAutocomplete}}autocomplete="off"{{/unless}}>
         <fieldset {{#if inlineForm}}class="flex flex-grow-1"{{/if}}>
           ${this.state.inputIds as string}
         </fieldset>

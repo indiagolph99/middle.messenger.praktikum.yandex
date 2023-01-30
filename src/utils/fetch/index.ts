@@ -1,9 +1,14 @@
+import { isPlainObject, getParams } from '$utils/isEqual';
+
+export const APP_PROXY = 'https://ya-praktikum.tech/api/v2/';
+
 interface RequestOptions {
   timeout?: number;
   data?: XMLHttpRequestBodyInit;
   headers?: Record<string, string>;
   retries?: number;
-  method: Values<typeof METHODS>;
+  method?: Values<typeof METHODS>;
+  withCredentials?: boolean;
 }
 
 const METHODS = {
@@ -19,53 +24,71 @@ const METHODS = {
  * На выходе: строка. Пример: ?a=1&b=2&c=[object Object]&k=1,2,3
  */
 function queryStringify(data: XMLHttpRequestBodyInit) {
-  const str = Object.entries(data).reduce((acc, [key, value], index) => {
-    // eslint-disable-next-line no-param-reassign
-    acc = `${acc}${index === 0 ? '' : '&'}${key}=${
-      // eslint-disable-next-line @typescript-eslint/restrict-template-expressions
-      Array.isArray(value) ? value.join(',') : value
-    }`;
-    return acc;
-  }, '');
+  if (!isPlainObject(data)) {
+    throw new Error('input must be an object');
+  }
 
-  return `?${str}`;
+  return getParams(data)
+    .map((arr) => arr.join('='))
+    .join('&');
 }
 
-class HTTPTransport {
-  get = (url: string, options: RequestOptions) => {
+export default class HTTPTransport {
+  url: string;
+
+  constructor(url: string) {
+    this.url = url;
+  }
+
+  get = <Response>(url?: string, options?: RequestOptions): Promise<Response> => {
     let format = '';
-    if (options.data) {
+    if (options && options.data) {
       format = queryStringify(options.data);
     }
 
     return this.request(
-      `${url}${format}`,
+      `${APP_PROXY}${this.url}${url || ''}/${format}`,
       { ...options, method: METHODS.GET },
-      options.timeout,
+      options?.timeout,
     );
   };
 
-  post = (url: string, options: RequestOptions) => {
-    return this.request(
-      url,
-      { ...options, method: METHODS.POST },
-      options.timeout,
+  post = <Response>(
+    url?: string,
+    options?: RequestOptions,
+  ): Promise<Response> => {
+    return this.request<Response>(
+      `${APP_PROXY}${this.url}${url || ''}`,
+      {
+        ...options,
+        method: METHODS.POST,
+        headers: {
+          ...options?.headers,
+        },
+      },
+      options?.timeout,
     );
   };
 
-  put = (url: string, options: RequestOptions) => {
-    return this.request(
-      url,
-      { ...options, method: METHODS.PUT },
-      options.timeout,
+  put = <Response>(url: string, options: RequestOptions) => {
+    return this.request<Response>(
+      `${APP_PROXY}${this.url}${url}`,
+      {
+        ...options,
+        method: METHODS.PUT,
+        headers: {
+          ...options?.headers,
+        },
+      },
+      options?.timeout,
     );
   };
 
-  delete = (url: string, options: RequestOptions) => {
-    return this.request(
-      url,
+  delete = <Response>(url: string, options: RequestOptions) => {
+    return this.request<Response>(
+      `${APP_PROXY}${this.url}${url}`,
       { ...options, method: METHODS.DELETE },
-      options.timeout,
+      options?.timeout,
     );
   };
 
@@ -74,12 +97,16 @@ class HTTPTransport {
   // options:
   // headers — obj
   // data — obj
-  request = (url: string, options: RequestOptions, timeout = 5000) => {
+  request = <Response>(
+    url: string,
+    options: RequestOptions,
+    timeout = 5000,
+  ) => {
     const { method, data, headers } = options;
 
-    return new Promise((resolve, reject) => {
+    return new Promise<Response>((resolve, reject) => {
       const xhr = new XMLHttpRequest();
-      xhr.open(method, url);
+      xhr.open(method || 'GET', url);
 
       if (headers) {
         Object.entries(headers).forEach(([key, value]) => {
@@ -87,15 +114,23 @@ class HTTPTransport {
         });
       }
 
-      xhr.addEventListener('load', function () {
-        resolve(xhr);
+      if (!(data instanceof FormData)) {
+        xhr.setRequestHeader('content-type', 'application/json');
+      }
+
+      xhr.withCredentials = true;
+      xhr.addEventListener('load', () => {
+        if (xhr.status === 200) {
+          resolve(xhr as Response);
+        } else {
+          reject(xhr);
+        }
       });
 
       xhr.timeout = timeout;
       xhr.addEventListener('abort', reject);
-      // eslint-disable-next-line unicorn/prefer-add-event-listener
-      xhr.onerror = reject;
-      xhr.ontimeout = reject;
+      xhr.addEventListener('error', reject);
+      xhr.addEventListener('timeout', reject);
 
       if (method === METHODS.GET || !data) {
         xhr.send();

@@ -1,6 +1,5 @@
 import { renderDOM } from '$core';
-import { SignUpForm, NonChat } from '$components';
+import { NonChat } from '$components';
 
-const signUpForm = new SignUpForm();
-const main = new NonChat(signUpForm);
+const main = new NonChat();
 renderDOM(main);

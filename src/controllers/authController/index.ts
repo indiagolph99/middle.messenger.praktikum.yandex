@@ -12,7 +12,7 @@ export default class AuthController {
       })
       .then((userRes) => {
         window.store.dispatch({ user: transformUser(userRes) });
-        window.router.go('/chats');
+        window.router.go('/messenger');
       });
   }
 
@@ -24,7 +24,7 @@ export default class AuthController {
       })
       .then((userRes) => {
         window.store.dispatch({ user: transformUser(userRes) });
-        window.router.go('/chats');
+        window.router.go('/messenger');
       });
   }
 

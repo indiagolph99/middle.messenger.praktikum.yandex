@@ -13,7 +13,7 @@ export default async function initApp(dispatch: Dispatch<AppState>) {
     }
 
     dispatch({ user: transformUser(response) });
-    window.router.go(window.location.pathname === '/' ? '/chats' : window.location.pathname);
+    window.router.go(window.location.pathname === '/' ? '/messenger' : window.location.pathname);
   } catch (error) {
     window.router.go('/login');
     console.error(error);

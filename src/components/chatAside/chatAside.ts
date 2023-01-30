@@ -16,7 +16,7 @@ export default class ChatAside extends Block<ChatAsideProps> {
   controller: ChatsController;
 
   constructor() {
-    const profileLink = new Link({ path: '/info', text: 'Profile' });
+    const profileLink = new Link({ path: '/settings', text: 'Profile' });
     const createChat = new CreateChat();
     const modal = new Modal({ slot: createChat });
     const addButton = new Button({

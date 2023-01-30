@@ -60,7 +60,7 @@ class LoginForm extends Block<Record<string, unknown>> {
       {
         title: 'Login',
         linkTitle: 'Sign up',
-        linkHref: '/signup',
+        linkHref: '/sign-up',
         formConfig: {
           itemsConfig,
           formId: 'login',

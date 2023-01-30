@@ -12,17 +12,17 @@ const routes = [
     shouldAuthorized: false,
   },
   {
-    path: '/signup',
+    path: '/sign-up',
     block: SignUpForm,
     shouldAuthorized: false,
   },
   {
-    path: '/info',
+    path: '/settings',
     block: Info,
     shouldAuthorized: true,
   },
   {
-    path: '/chats',
+    path: '/messenger',
     block: Main,
     shouldAuthorized: true,
   },

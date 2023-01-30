@@ -188,7 +188,7 @@ export default class Info extends Block<InfoProps> {
       rules,
     );
     const avatar = new Avatar({ url: '#', formId: 'profile' });
-    const link = new Link({ path: '/chats', text: 'Back to chats' });
+    const link = new Link({ path: '/messenger', text: 'Back to chats' });
 
     const logOutButton = new Button({
       type: Button.TYPES.DANGER,

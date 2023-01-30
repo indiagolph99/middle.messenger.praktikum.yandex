@@ -6,7 +6,7 @@ export default class NotFound extends Block {
 
   constructor() {
     const notFound = new Error({ code: 404, message: 'Nothing to be found' });
-    const link = new Link({ text: 'Back to chats', path: '/chats' });
+    const link = new Link({ text: 'Back to chats', path: '/messenger' });
     super({ notFound, link });
   }
 

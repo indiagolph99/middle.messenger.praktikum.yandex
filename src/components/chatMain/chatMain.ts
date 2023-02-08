@@ -72,10 +72,10 @@ export default class ChatMain extends Block {
       text: 'Confirm deletion',
       events: {
         click: () => {
-          const currentChat = window.store.getState().currentChat.id;
+          const currentChat = window.store.getState()?.currentChat?.id;
           const oldChats = window.store.getState().chats;
           this.controller
-            .deleteChat(currentChat)
+            .deleteChat(currentChat || '')
             .then(() => {
               deleteChatModal.hide();
               window.store.dispatch({
@@ -138,11 +138,11 @@ export default class ChatMain extends Block {
     ) {
       this.setProps({ currentChat: newChats });
       this.controller
-        .getToken(newChats.id)
+        .getToken(newChats?.id || '')
         .then((token: string) => {
           this.socket = createSocket(
             currentUser as string,
-            newChats?.id,
+            newChats?.id || '',
             token,
           );
         })

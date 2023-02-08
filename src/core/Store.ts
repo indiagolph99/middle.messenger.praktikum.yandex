@@ -17,6 +17,9 @@ export const defaultAppState: AppState = {
   screen: null,
   loginFormError: null,
   user: null,
+  chats: [],
+  messages: [],
+  currentChatUsers: [],
 };
 
 export default class Store<

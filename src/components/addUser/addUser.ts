@@ -29,7 +29,7 @@ export default class AddUser extends Block {
       form,
       events: {
         submit: (event: SubmitEvent) => {
-          const chatId = window.store.getState().currentChat.id;
+          const chatId = window.store.getState()?.currentChat?.id || '';
           const formData = new FormData(event.target as HTMLFormElement);
           const formDataObj = Object.fromEntries(formData.entries());
           this.controller

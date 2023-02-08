@@ -1,6 +1,7 @@
 import { Router, Store, initRouter } from '$core';
 import initApp from '$utils/initApp';
 import { defaultAppState } from '$core/Store';
+import './styles/index.css';
 
 declare global {
   interface Window {

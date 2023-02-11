@@ -16,6 +16,7 @@
   },
   "ignoreFiles": [
     "build/*",
+    "coverage/**/*",
     ".parcel-cache/",
     "node_modules/",
     "dist/**/*.css"

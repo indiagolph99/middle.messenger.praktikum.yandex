@@ -97,11 +97,7 @@ export default class HTTPTransport {
   // options:
   // headers — obj
   // data — obj
-  request = <Response>(
-    url: string,
-    options: RequestOptions,
-    timeout = 5000,
-  ) => {
+  request<Response>(url: string, options: RequestOptions, timeout = 5000) {
     const { method, data, headers } = options;
 
     return new Promise<Response>((resolve, reject) => {

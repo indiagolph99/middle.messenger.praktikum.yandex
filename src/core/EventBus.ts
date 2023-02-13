@@ -17,8 +17,8 @@ export default class EventBus<
   }
 
   off(event: E, callback: Listener<M[E]>) {
-    if (!this.listeners[event]) {
-      throw new Error(`Нет события: ${event}`);
+    if (!this?.listeners[event]) {
+      throw new Error(`No event: ${event}`);
     }
 
     this.listeners[event] = this.listeners[event]?.filter(
@@ -27,7 +27,7 @@ export default class EventBus<
   }
 
   emit<Event extends E = E>(event: Event, ...args: M[Event]) {
-    if (!this.listeners[event]) {
+    if (!this?.listeners[event]) {
       throw new Error(`No event registered: ${event}`);
     }
 

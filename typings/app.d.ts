@@ -27,7 +27,7 @@ declare global {
     loginFormError: string | null;
     user: User | null;
     chats: ChatsResponse[];
-    currentChat: { id: string; title: string; avatar?: string };
+    currentChat?: { id: string; title: string; avatar?: string };
     messages: SocketMessage[];
     currentChatUsers: UserResponse[];
   };

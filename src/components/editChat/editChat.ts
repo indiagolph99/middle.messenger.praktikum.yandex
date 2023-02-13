@@ -26,7 +26,7 @@ export default class EditChat extends Block {
         (newChats as unknown as PlainObject) || {},
       )
     ) {
-      const chatId = window.store.getState().currentChat.id;
+      const chatId = window.store.getState()?.currentChat?.id || '';
       this.controller
         .getUsersFromChat(chatId)
         .then((users) => {

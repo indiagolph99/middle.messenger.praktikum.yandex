@@ -1,4 +1,4 @@
-# sprint_3 hw
+# sprint_4 hw
 
 ## Скрипты
 development mode:
@@ -14,12 +14,19 @@ start server
 npm run start
 ```
 
+start tests
+```bash
+npm run test
+```
+
 ## [Ссылка на макеты](https://www.figma.com/file/HjeXthN0uUsBDP5bRptwDt/module-1-mockups?t=jxb6RnBmnVwy8mxO-6)
 
-## [Ссылка на Netlify](https://superlative-stardust-b71d59.netlify.app/)
+## [Ссылка на Render](https://messenger-cnf2.onrender.com)
 
 
 Changelog:
 
-* Роутинг
-* Чаты
+* Docker сборка
+* Webpack
+* Тесты
+* precommit
